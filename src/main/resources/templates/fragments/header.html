@@ -1,0 +1,26 @@
+<div th:fragment="perfil(variable)">
+	<nav class="navbar navbar-light bg-primary ">
+		<div class="d-flex  flex-row   align-items-center bd-highlight">
+			<img width="50px" height="50px" class="rounded float-left "
+				th:src="@{/img/logopng.png}" alt="">
+			<h5 class="text-white font-weight-bold"
+				style="padding-left: 10px; margin: 0px;">Lista de Tareas</h5>
+
+		</div>
+		
+		<div class="mr-3">
+
+			<div th:if="${variable == 'noingreso'}" >
+			<button type="button" class="btn btn-primary">
+				<span class="font-weight-bold text-white">INICIAR SESION</span>
+			</button>
+			</div>
+			
+			<div th:if="${variable == 'ingreso'}" >
+			<div sec:authorize="isAuthenticated()">
+      Authenticated as <span th:text=""></span></div>
+			</div>
+			
+		</div>
+	</nav>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Friend form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <div th:replace="fragments/estilos :: estilos">
+			
+	</div>
+    
+</head>
+<body>
+	<div th:replace="fragments/header :: perfil('ingreso')" >
+			
+	</div>
+   <table id="countryList">
+    <thead>
+        <tr>
+         <th>Codigo</th>
+        <th>Descripcion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="category : ${categoryList}">
+            <td th:text="${category.idcategoria}"></td>
+            <td th:text="${category.descripcion}"></td>
+            
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
