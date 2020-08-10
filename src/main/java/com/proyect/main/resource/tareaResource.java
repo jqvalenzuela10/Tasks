@@ -60,34 +60,7 @@ public class tareaResource {
 	
 	@GetMapping("/tareas")
 	public String listTareas(Model model,Principal p,HttpServletRequest request){
-		System.out.println("entro al la accion tareas");
-		
-		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
-		//si no existe el usuario lo guardamos en la bd
-		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
-		System.out.println("va a entra fgggaaaa        ---- "+emailBd);
-				if(emailBd==null) {
-					System.out.println("entro aqui");
-					Usuario u=new Usuario();
-					
-					u.setNombre(userDetails.get("name").toString());
-					u.setEmail(userDetails.get("email").toString());
-					u.setImagen(userDetails.get("picture").toString());
-					
-					usuarioMapper.insert(u);
-					
-				}
-		
-				
-				Usuario emailBdUltimo=usuarioMapper.findAllByEmail(userDetails.get("email").toString());		
-		
-		
-		model.addAttribute("tareaList",tareaMapper.findByIdUser(emailBdUltimo.getId_usu()));
-		model.addAttribute("tarea", new Tarea());
-		model.addAttribute("id_usu", emailBdUltimo.getId_usu());
-		model.addAttribute("nombre",userDetails.get("name"));
-		model.addAttribute("fotoPerfil",userDetails.get("picture"));
-		
+	
 		
 		
 		
