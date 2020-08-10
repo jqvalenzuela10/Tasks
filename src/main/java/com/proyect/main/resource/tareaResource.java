@@ -49,14 +49,18 @@ public class tareaResource {
 	}
 	
 	
-	
+	@GetMapping("/prueba")
+	public String prueba() {
+		
+		return "prueba";
+	}
 	
 	
 	
 	
 	@GetMapping("/tareas")
 	public String listTareas(Model model,Principal p,HttpServletRequest request){
-		
+		System.out.println("entro al la accion tareas");
 		
 		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
 		//si no existe el usuario lo guardamos en la bd

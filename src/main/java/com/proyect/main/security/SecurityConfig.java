@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	       .and()
 	       .logout().logoutUrl("/logout").logoutSuccessUrl("/")
 	       .and()
-	       .oauth2Login().defaultSuccessUrl("/tareas", true)
+	       .oauth2Login().defaultSuccessUrl("/prueba", true)
 	       .loginPage("/login").authorizationEndpoint().baseUri("/login/oauth2/authorization")
 	       ;
 	       
