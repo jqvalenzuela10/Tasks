@@ -17,8 +17,12 @@
 			</div>
 			
 			<div th:if="${variable == 'ingreso'}" >
-			<div sec:authorize="isAuthenticated()">
-      Authenticated as <span th:text=""></span></div>
+			<div sec:authorize="isAuthenticated()" style="color:white">
+       Hola <span th:text="${nombre}"></span>
+       <img height="25px" width="25px" alt="no img" th:src="${fotoPerfil}">
+       </div>
+       
+			<a style="color:white" href="/logout">Cerrar Sesion</a>
 			</div>
 			
 		</div>

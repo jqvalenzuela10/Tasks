@@ -19,6 +19,29 @@
     background-color: var(--color-primario) !important;
     
 }
+.btn-outline-primary{
+	color:var(--color-primario) !important;
+	border-color: var(--color-primario) !important;
+	background-color: transparent !important;
+	background-image: none;
+}
+
+
+.btn-outline-primary:hover{
+	color:#fff !important;
+	background-color: var(--color-primario) !important;
+	border-color: var(--color-primario) !important;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle {
+	
+	color:#fff !important;
+	background-color: var(--color-primario) !important;
+	border-color: var(--color-primario) !important;
+}
+
+
+
 .bg-primary{
     background-color: var(--color-primario) !important;
 }
@@ -97,4 +120,28 @@
     width: 30%;height: 580px;
 }
 }
+
+
+
+
+/*utlimo*/
+.container-tarea{
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.nav-item{
+    margin-bottom: 0px !important;
+    width: 20%;
+}
+
+.degradado{
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.navTarea{
+    border-bottom:none 
+}
+
+
 

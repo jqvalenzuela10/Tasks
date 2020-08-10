@@ -1,33 +1,178 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
- xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
-    <title>Friend form</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
-    <div th:replace="fragments/estilos :: estilos">
-			
-	</div>
-    
+<title>Friend form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/estilos/estilos.css}">
+
+<link rel="icon" type="image/png" th:href="@{/img/iconoNavegador.png}" />
+
 </head>
 <body>
-	<div th:replace="fragments/header :: perfil('ingreso')" >
-			
+
+	<div th:replace="fragments/header :: perfil('ingreso')"></div>
+
+	<div class="container mt-5 ">
+		<ul
+			class="nav nav-tabs d-flex justify-content-center  navTarea container-tarea "
+			id="myTab" role="tablist">
+			<li class="nav-item" role="presentation"><a
+				class="nav-link active text-center mt-3" id="home-tab"
+				data-toggle="tab" href="#home" role="tab" aria-controls="home"
+				aria-selected="true"> <svg width="1em" height="1em"
+						viewBox="0 0 16 16" class="bi bi-person-check-fill"
+						fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+							d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9.854-2.854a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                    </svg> MIS TAREAS
+			</a></li>
+			<li class="nav-item" role="presentation"><a
+				class="nav-link text-center mt-3" id="profile-tab" data-toggle="tab"
+				href="#profile" role="tab" aria-controls="profile"
+				aria-selected="false"> <svg width="1em" height="1em"
+						viewBox="0 0 16 16" class="bi bi-people-fill" fill="currentColor"
+						xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+							d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                    </svg> MI TEAM
+			</a></li>
+
+		</ul>
+
+		<div class="tab-content mt-5 degradado mb-3 " id="myTabContent">
+
+
+			<!-- Tareasss -->
+			<div class="tab-pane fade show active" id="home" role="tabpanel"
+				aria-labelledby="home-tab" style="height: 68vh">
+
+				<form action="#" th:action="@{/save}" class="input-group"
+					th:object="${tarea}" method="post">
+
+
+					<input type="hidden" th:field="*{id}" id="id" name="id"> <input
+						th:field="*{descripcion}" type="text" style="height: 60px;"
+						class="form-control" placeholder="AGREGA UNA NUEVA TAREA"
+						aria-label="AQUI AGREGA UNA NUEVA TAREA"
+						aria-describedby="basic-addon2">
+
+
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit">
+							<svg width="2em" height="2em" viewBox="0 0 16 16"
+								class="bi bi-check2-square" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+									d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                        <path fill-rule="evenodd"
+									d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+                                      </svg>
+						</button>
+					</div>
+
+
+				</form>
+				<!-- si existe tareas mostralo -->
+
+				<div th:replace="fragments/tareas :: tarea"></div>
+
+
+			</div>
+
+
+
+			<!-- Equiposs -->
+			<div class="tab-pane fade" id="profile" role="tabpanel"
+				aria-labelledby="profile-tab" style="height: 68vh">
+
+				<div th:replace="fragments/team :: team"></div>
+
+
+			</div>
+		</div>
+
+
+
 	</div>
-   <table id="countryList">
-    <thead>
-        <tr>
-         <th>Codigo</th>
-        <th>Descripcion</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="category : ${categoryList}">
-            <td th:text="${category.idcategoria}"></td>
-            <td th:text="${category.descripcion}"></td>
-            
-        </tr>
-    </tbody>
-</table>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+$(function(){
+	  
+		  $(".tareaDescripcion").keyup(function(e){
+			  e.preventDefault();
+			  let tarea={};
+			  
+			  const $padre=$(e.currentTarget).parent();
+			  //el hijo seria el checkbox
+			  const $hijo=$padre.children()[0];
+			  
+			  console.log($padre);
+			  console.log($hijo);
+			  console.log(e.target.id+' '+e.target.value+'  '+$($hijo).children().is(":checked"));
+			
+			  tarea={
+			    		id:e.target.id,
+			    		descripcion:e.target.value,
+			    		hecho:$($hijo).children().is(":checked")	 
+			     		}
+			  
+			  axios.put("http://localhost:8080/rest/user", tarea).then(response => {
+		    		console.log(response.data)
+		    		
+		        });
+			 
+		  });  
+	    
+   $(".checkbox-tarea").click(function(e){
+		 
+		  
+		  if(e.target.id!=""){
+			 
+			  let tarea={};
+			  console.log('haz tocado el checkbox-tarea');
+			  
+			  const $padre=$(e.currentTarget).parent();
+
+			  const $padreSuperio=$($padre).parent();
+			  //el hijo seria la descripcion
+			  const $hijo=$padreSuperio.children()[1];
+			  
+			  console.log(e.target.id+' '+$($hijo).children().val()+'  '+$(e.target).is(":checked"));
+			  
+			  tarea={
+			    		id:e.target.id,
+			    		descripcion:$($hijo).children().val(),
+			    		hecho:$(e.target).is(":checked")	 
+			     		}
+			  
+			  axios.put("http://localhost:8080/rest/user", tarea).then(response => {
+		    		console.log(response.data)
+		    		
+		        });
+			  
+		  	}
+		  
+		
+	  }); 
+   
+   
+});
+
+</script>
 </html>

@@ -19,7 +19,7 @@
 
 <div th:replace="fragments/header :: perfil('noingreso')"></div>
 
-	<form th:action="@{/restricted}" method="get">
+	<form th:action="@{/login/oauth2/authorization/google}" method="post">
 
 		<main
 			class="d-flex align-items-center  justify-content-center  main w-100">
@@ -31,11 +31,11 @@
 					srcset="">
 				<div class="w-75">
 					<button type="button" class="btn btn-dark btn-lg btn-block ">
-						<span class=" font-weight-bold ">CONTINUAR
+						<span class=" font-weight-bold " style="font-size:0.875rem">CONTINUAR
 							CON GITHUB</span>
 					</button>
 					<button type="submit" class="btn btn-danger btn-lg btn-block ">
-						<span class=" font-weight-bold" >CONTINUAR
+						<span class=" font-weight-bold"  style="font-size:0.875rem">CONTINUAR
 							CON GOOGLE</span>
 					</button>
 				</div>
@@ -47,17 +47,14 @@
 	<footer class="footer text-center py-3 " style="background-color: #eaeaea">
 		Licencia 2020 - Creado por: <a
 			href="https://www.linkedin.com/in/jonathan-quilca-valenzuela/">
-			jonathan quilca valenzuela</a>
+			JONATHAN QUILCA VALENZUELA</a>
 	</footer>
 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-	crossorigin="anonymous"></script>
+
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"

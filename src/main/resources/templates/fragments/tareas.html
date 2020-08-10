@@ -1,0 +1,42 @@
+<div th:fragment="tarea" class="pt-4" style="width: 100%;display: flex;justify-content: center;">
+
+	
+		<table th:if="${!tareaList.isEmpty()}" class="table table-stripped tabla-tarea">
+			
+			<tr  class="d-flex align-items-center justify-content-start items" th:each="tarea : ${tareaList}">
+				<td class="form-check form-check-inline border-0 ">
+				
+					<input class="form-check-input checkbox-tarea " type="checkbox"
+						th:id="${tarea.id}" th:checked="${tarea.hecho}">
+						<!-- <label
+						class="form-check-label" for="inlineCheckbox1" >1</label> -->
+				 </td>
+				 
+				<td class="col-md-10  border-0 tareaDescripcion" >
+				
+      				<input type="text" class="form-control input-tarea" th:id="${tarea.id}" placeholder="First name" th:value="${tarea.descripcion}" required style="border-top: none;border-left: none;border-right: none;">
+      				
+				</td>
+				
+				<td class="border-0"><a th:href="@{/delete/{id}(id=${tarea.id})} " onclick="return confirm('Estás seguro que quieres eliminar?');">
+				
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="color:red">
+				
+ 				 <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>
+				
+				</svg>
+				</a>
+				</td>
+			</tr>
+		</table>
+
+
+		<div th:if="${tareaList.isEmpty()}" class="card mt-5 mb-3  " style="width: 22rem; border: none">
+			<img class="card-img-top" th:src="@{/img/imgPensando.png}"
+				alt="Card image cap">
+			<div class="card-body ">
+				<h4 class="card-text font-weight-bold text-center">AUN NO
+					EXISTEN TAREAS</h4>
+			</div>
+		</div>
+	</div>

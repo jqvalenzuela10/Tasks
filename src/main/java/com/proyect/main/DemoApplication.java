@@ -5,9 +5,9 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.proyect.main.model.Category;
+import com.proyect.main.model.Tarea;
 
-@MappedTypes(Category.class)
+@MappedTypes(Tarea.class)
 @MapperScan("com.proyect.main.mapper")
 @SpringBootApplication
 public class DemoApplication {
