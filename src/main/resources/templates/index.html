@@ -56,7 +56,9 @@
 					th:object="${tarea}" method="post">
 
 
-					<input type="hidden" th:field="*{id}" id="id" name="id"> <input
+					<input type="hidden" th:field="*{id}" id="id" name="id">
+					<input type="hidden" th:value="${id_usu}" id="id_usu" th:name="id_usu"  >
+					 <input
 						th:field="*{descripcion}" type="text" style="height: 60px;"
 						class="form-control" placeholder="AGREGA UNA NUEVA TAREA"
 						aria-label="AQUI AGREGA UNA NUEVA TAREA"

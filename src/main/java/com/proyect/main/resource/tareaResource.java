@@ -30,7 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.WebUtils;
 
 import com.proyect.main.mapper.TareaMapper;
+import com.proyect.main.mapper.UserMapper;
 import com.proyect.main.model.Tarea;
+import com.proyect.main.model.Usuario;
 
 @Controller
 public class tareaResource {
@@ -38,6 +40,9 @@ public class tareaResource {
 	@Autowired
 	private TareaMapper tareaMapper;
 	
+	
+	@Autowired
+	private UserMapper usuarioMapper;
 	
 	public tareaResource(TareaMapper c) {
 		this.tareaMapper=c;
@@ -54,12 +59,34 @@ public class tareaResource {
 		
 		
 		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
-		System.out.println(userDetails.get("picture"));
-		System.out.println(request.getUserPrincipal());
-		model.addAttribute("tareaList",tareaMapper.findAll());
+		//si no existe el usuario lo guardamos en la bd
+		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
+		System.out.println("va a entra fgggaaaa        ---- "+emailBd);
+				if(emailBd==null) {
+					System.out.println("entro aqui");
+					Usuario u=new Usuario();
+					
+					u.setNombre(userDetails.get("name").toString());
+					u.setEmail(userDetails.get("email").toString());
+					u.setImagen(userDetails.get("picture").toString());
+					
+					usuarioMapper.insert(u);
+					
+				}
+		
+				
+				Usuario emailBdUltimo=usuarioMapper.findAllByEmail(userDetails.get("email").toString());		
+		
+		
+		model.addAttribute("tareaList",tareaMapper.findByIdUser(emailBdUltimo.getId_usu()));
 		model.addAttribute("tarea", new Tarea());
+		model.addAttribute("id_usu", emailBdUltimo.getId_usu());
 		model.addAttribute("nombre",userDetails.get("name"));
 		model.addAttribute("fotoPerfil",userDetails.get("picture"));
+		
+		
+		
+		
 		return "index";
 	}
 	
@@ -83,10 +110,10 @@ public class tareaResource {
 		return "redirect:/tareas";
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable int id) {
+	@GetMapping("/delete/{id}/{id_usu}")
+	public String delete(@PathVariable int id,@PathVariable int id_usu) {
 		
-		tareaMapper.deleteFindById(id);
+		tareaMapper.deleteFindById(id,id_usu);
 		return "redirect:/tareas";
 	}
 }

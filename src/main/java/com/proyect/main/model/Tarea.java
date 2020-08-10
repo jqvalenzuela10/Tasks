@@ -5,8 +5,14 @@ public class Tarea {
 	private int id;
 	private String descripcion;
 	private boolean hecho;
+	private int id_usu;
 	
-	
+	public int getId_usu() {
+		return id_usu;
+	}
+	public void setId_usu(int id_usu) {
+		this.id_usu = id_usu;
+	}
 	public int getId() {
 		return id;
 	}

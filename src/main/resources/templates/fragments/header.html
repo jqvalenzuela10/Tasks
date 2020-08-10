@@ -7,24 +7,42 @@
 				style="padding-left: 10px; margin: 0px;">Lista de Tareas</h5>
 
 		</div>
-		
+
 		<div class="mr-3">
 
-			<div th:if="${variable == 'noingreso'}" >
-			<button type="button" class="btn btn-primary">
-				<span class="font-weight-bold text-white">INICIAR SESION</span>
-			</button>
+			<div th:if="${variable == 'noingreso'}">
+				<button type="button" class="btn btn-primary">
+					<span class="font-weight-bold text-white">INICIAR SESION</span>
+				</button>
 			</div>
+
+			<div th:if="${variable == 'ingreso'}">
+				<div sec:authorize="isAuthenticated()" style="color: white">
+				
+					<div class="dropdown">
+						
+						<button class="btn btn-primary dropdown-toggle" type="button"
+							id="dropdownMenuButton" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false" th:text="${nombre}"></button>
+							
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item btn btn-danger" href="/logout" >Cerrar Sesion</a> <a
+								class="dropdown-item" href="#">Another action</a> <a
+								class="dropdown-item" href="#">Something else here</a>
+						</div>
+						 <img height="25px"
+						width="25px" style="border-radius: 50%;" alt="no img" th:src="${fotoPerfil}">
+					</div>
+
+
+
+
+					
+				</div>
+
 			
-			<div th:if="${variable == 'ingreso'}" >
-			<div sec:authorize="isAuthenticated()" style="color:white">
-       Hola <span th:text="${nombre}"></span>
-       <img height="25px" width="25px" alt="no img" th:src="${fotoPerfil}">
-       </div>
-       
-			<a style="color:white" href="/logout">Cerrar Sesion</a>
 			</div>
-			
+
 		</div>
 	</nav>
 </div>
