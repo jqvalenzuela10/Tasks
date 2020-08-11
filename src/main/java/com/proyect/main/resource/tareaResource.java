@@ -56,14 +56,14 @@ public class tareaResource {
 	
 	@GetMapping("/tareas")
 	public String listTareas(Model model,Principal p,HttpServletRequest request){
-		System.out.println("entro al la accion tareas");
+		
 		//the problem is here
 		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
 		//si no existe el usuario lo guardamos en la bd
 		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
-		System.out.println("va a entra fgggaaaa        ---- "+emailBd);
+		
 				if(emailBd==null) {
-					System.out.println("entro aqui");
+					
 					Usuario u=new Usuario();
 					
 					u.setNombre(userDetails.get("name").toString());
@@ -87,7 +87,7 @@ public class tareaResource {
 		
 		
 		
-		return "index";
+		return "prueba";
 	}
 	
 	
