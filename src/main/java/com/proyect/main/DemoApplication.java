@@ -9,7 +9,7 @@ import com.proyect.main.model.Tarea;
 import com.proyect.main.model.Usuario;
 
 
-@MappedTypes(Usuario.class)
+@MappedTypes(Tarea.class)
 @MapperScan("com.proyect.main.mapper")
 @SpringBootApplication
 public class DemoApplication {
