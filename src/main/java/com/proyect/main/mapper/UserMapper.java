@@ -11,7 +11,7 @@ import com.proyect.main.model.Usuario;
 @Mapper
 public interface UserMapper {
 
-	@Select("select * from usuario")
+	@Select("select * from heroku_52a908aab878403.usuario")
 	List<Usuario>  findAll();
 	
 	
