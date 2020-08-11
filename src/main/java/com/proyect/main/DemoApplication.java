@@ -6,8 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.proyect.main.model.Tarea;
+import com.proyect.main.model.Usuario;
 
-@MappedTypes(Tarea.class)
+
+@MappedTypes(Usuario.class)
 @MapperScan("com.proyect.main.mapper")
 @SpringBootApplication
 public class DemoApplication {
