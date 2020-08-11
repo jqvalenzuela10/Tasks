@@ -59,8 +59,7 @@ public class tareaResource {
 		
 	
 		//si no existe el usuario lo guardamos en la bd
-		Usuario emailBd=usuarioMapper.findAllByEmail("");
-		
+		List<Usuario> emailBd=usuarioMapper.findAll();
 				
 		
 		
