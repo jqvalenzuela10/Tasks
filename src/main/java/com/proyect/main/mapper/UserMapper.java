@@ -11,7 +11,7 @@ import com.proyect.main.model.Usuario;
 @Mapper
 public interface UserMapper {
 
-	@Select("select*from usuario where email=#{email}")
+	@Select("select * from usuario where email=#{email}")
 	Usuario  findAllByEmail(String email);
 	
 	

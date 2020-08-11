@@ -57,10 +57,9 @@ public class tareaResource {
 	@GetMapping("/tareas")
 	public String listTareas(Model model,Principal p,HttpServletRequest request){
 		
-		//the problem is here
-		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
+	
 		//si no existe el usuario lo guardamos en la bd
-		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
+		Usuario emailBd=usuarioMapper.findAllByEmail("");
 		
 				
 		
