@@ -60,9 +60,9 @@ public class tareaResource {
 		//the problem is here
 		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
 		//si no existe el usuario lo guardamos en la bd
-	
+		//List<Usuario> emailBd=usuarioMapper.findAll();
 		
-				
+		model.addAttribute("usuario", userDetails.get("name"));		
 		
 		
 		return "prueba";
@@ -70,7 +70,35 @@ public class tareaResource {
 	
 	
 
-	
+	/*
+	 * //the problem is here
+		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
+		//si no existe el usuario lo guardamos en la bd
+		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
+
+if(emailBd==null) {
+					
+					Usuario u=new Usuario();
+					
+					u.setNombre(userDetails.get("name").toString());
+					u.setEmail(userDetails.get("email").toString());
+					u.setImagen(userDetails.get("picture").toString());
+					
+					usuarioMapper.insert(u);
+					
+				}
+		
+				
+				Usuario emailBdUltimo=usuarioMapper.findAllByEmail(userDetails.get("email").toString());		
+		
+		
+		model.addAttribute("tareaList",tareaMapper.findByIdUser(emailBdUltimo.getId_usu()));
+		model.addAttribute("tarea", new Tarea());
+		model.addAttribute("id_usu", emailBdUltimo.getId_usu());
+		model.addAttribute("nombre",userDetails.get("name"));
+		model.addAttribute("fotoPerfil",userDetails.get("picture"));
+		
+	 * */
 	
 	
 	@GetMapping("/actualizarTarea")
