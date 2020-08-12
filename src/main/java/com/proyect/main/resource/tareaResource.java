@@ -62,7 +62,7 @@ public class tareaResource {
 		//si no existe el usuario lo guardamos en la bd
 		List<Usuario> emailBd=usuarioMapper.findAll();
 		
-		model.addAttribute("usuario", userDetails.get("name"));		
+		model.addAttribute("usuario", userDetails.get("email"));		
 		
 		
 		return "prueba";
