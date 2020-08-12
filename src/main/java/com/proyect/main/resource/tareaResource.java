@@ -60,7 +60,7 @@ public class tareaResource {
 		//the problem is here
 		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
 		//si no existe el usuario lo guardamos en la bd
-		//List<Usuario> emailBd=usuarioMapper.findAll();
+		List<Usuario> emailBd=usuarioMapper.findAll();
 		
 		model.addAttribute("usuario", userDetails.get("name"));		
 		
