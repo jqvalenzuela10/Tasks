@@ -60,12 +60,32 @@ public class tareaResource {
 		//the problem is here
 		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
 		//si no existe el usuario lo guardamos en la bd
-		List<Usuario> emailBd=usuarioMapper.findAll();
+		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
+
+		if(emailBd==null) {
+					
+					Usuario u=new Usuario();
+					
+					u.setNombre(userDetails.get("name").toString());
+					u.setEmail(userDetails.get("email").toString());
+					u.setImagen(userDetails.get("picture").toString());
+					
+					usuarioMapper.insert(u);
+					
+				}
 		
-		model.addAttribute("usuario", userDetails.get("email"));		
+				
+				Usuario emailBdUltimo=usuarioMapper.findAllByEmail(userDetails.get("email").toString());		
 		
 		
-		return "prueba";
+		model.addAttribute("tareaList",tareaMapper.findByIdUser(emailBdUltimo.getId_usu()));
+		model.addAttribute("tarea", new Tarea());
+		model.addAttribute("id_usu", emailBdUltimo.getId_usu());
+		model.addAttribute("nombre",userDetails.get("name"));
+		model.addAttribute("fotoPerfil",userDetails.get("picture"));	
+		
+		
+		return "index";
 	}
 	
 	
