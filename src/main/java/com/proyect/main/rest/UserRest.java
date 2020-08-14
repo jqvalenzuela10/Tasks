@@ -1,47 +1,33 @@
 package com.proyect.main.rest;
 
-import java.security.Principal;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyect.main.mapper.TareaMapper;
-import com.proyect.main.model.Tarea;
+import com.proyect.main.mapper.TeamMapper;
+import com.proyect.main.mapper.UserMapper;
+import com.proyect.main.model.Usuario;
 
 @RestController
 @RequestMapping("/rest")
 public class UserRest {
 
-	@Autowired
-	private TareaMapper tareaMapper;
+	@Autowired UserMapper usuarioMapper;
 	
-	@GetMapping("/user")
-	public ResponseEntity<Tarea> get() {
-		List<Tarea> lista=tareaMapper.findAll();
+	@Autowired TeamMapper teamMapper;
+	
+	@PutMapping("/user")
+	public String putUser(@RequestBody Usuario usu,Model model) {
 		
-		return new ResponseEntity(lista, HttpStatus.OK) ;
-	}
-	@PutMapping(value = "/user")
-	public String post(@RequestBody Tarea tarea) {
-		System.out.println(tarea);
-		tareaMapper.update(tarea);
-		return "{'response':'actualizado correctamente'}";
-	}
+		usuarioMapper.actualizar(usu);
+		
+		//tareas en team
+		model.addAttribute("teamList",teamMapper.listaTeam(usu.getId_usu()));
 	
-	
-	@GetMapping("/restricted")
-	public String restricted(OAuth2AuthenticationToken  p) {
-		return "Hola"+p.getName();
+		return "";
 	}
 	
 }

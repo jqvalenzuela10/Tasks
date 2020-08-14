@@ -30,8 +30,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.WebUtils;
 
 import com.proyect.main.mapper.TareaMapper;
+import com.proyect.main.mapper.TeamMapper;
 import com.proyect.main.mapper.UserMapper;
 import com.proyect.main.model.Tarea;
+import com.proyect.main.model.Team;
 import com.proyect.main.model.Usuario;
 
 @Controller
@@ -43,6 +45,11 @@ public class tareaResource {
 	
 	@Autowired
 	private UserMapper usuarioMapper;
+	
+	@Autowired
+	private TeamMapper teamMapper;
+	
+	
 	
 	public tareaResource(TareaMapper c) {
 		this.tareaMapper=c;
@@ -76,56 +83,43 @@ public class tareaResource {
 		
 				
 				Usuario emailBdUltimo=usuarioMapper.findAllByEmail(userDetails.get("email").toString());		
+				int id_usu=emailBdUltimo.getId_usu();
+		//tareas personales
+		model.addAttribute("tareaListPersonal",tareaMapper.findByIdUser(id_usu,false));
 		
 		
-		model.addAttribute("tareaList",tareaMapper.findByIdUser(emailBdUltimo.getId_usu()));
+		
+		
+		
+		
+		
 		model.addAttribute("tarea", new Tarea());
-		model.addAttribute("id_usu", emailBdUltimo.getId_usu());
+		model.addAttribute("id_usu", id_usu);
 		model.addAttribute("nombre",userDetails.get("name"));
 		model.addAttribute("fotoPerfil",userDetails.get("picture"));	
+		
+		
+		
+		//tareas en team
+		
+		List<Team> u=teamMapper.listaTeam(id_usu);
+		
+		if(!u.isEmpty()) {
+			model.addAttribute("teamList",u);
+			model.addAttribute("tareaListTeam",tareaMapper.findByTaskTeam(true,u.get(0).getId_team()));
+		}
+		else {
+			model.addAttribute("teamList",u);
+			model.addAttribute("tareaListTeam",tareaMapper.findByTaskTeam(true,123123));
+		}
+		
 		
 		
 		return "index";
 	}
 	
-	
 
-	/*
-	 * //the problem is here
-		Map<String , Object> userDetails = ((DefaultOidcUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getAttributes();
-		//si no existe el usuario lo guardamos en la bd
-		Usuario emailBd=usuarioMapper.findAllByEmail(userDetails.get("email").toString());
 
-if(emailBd==null) {
-					
-					Usuario u=new Usuario();
-					
-					u.setNombre(userDetails.get("name").toString());
-					u.setEmail(userDetails.get("email").toString());
-					u.setImagen(userDetails.get("picture").toString());
-					
-					usuarioMapper.insert(u);
-					
-				}
-		
-				
-				Usuario emailBdUltimo=usuarioMapper.findAllByEmail(userDetails.get("email").toString());		
-		
-		
-		model.addAttribute("tareaList",tareaMapper.findByIdUser(emailBdUltimo.getId_usu()));
-		model.addAttribute("tarea", new Tarea());
-		model.addAttribute("id_usu", emailBdUltimo.getId_usu());
-		model.addAttribute("nombre",userDetails.get("name"));
-		model.addAttribute("fotoPerfil",userDetails.get("picture"));
-		
-	 * */
-	
-	
-	@GetMapping("/actualizarTarea")
-	public String actualizar(Tarea tarea) {
-		
-		return "redirect:/tareas";
-	}
 	
 	
 	

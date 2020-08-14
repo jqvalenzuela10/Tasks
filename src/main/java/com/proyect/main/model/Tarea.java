@@ -4,9 +4,13 @@ public class Tarea {
 
 	private int id;
 	private String descripcion;
-	private boolean hecho;
+	private boolean hecho,personal;
+	
 	private int id_usu;
 	
+
+
+
 	public int getId_usu() {
 		return id_usu;
 	}
@@ -32,6 +36,14 @@ public class Tarea {
 	public void setHecho(boolean hecho) {
 		this.hecho = hecho;
 	}
+	public boolean isPersonal() {
+		return personal;
+	}
+	public void setPersonal(boolean personal) {
+		this.personal = personal;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Tarea [id=" + id + ", descripcion=" + descripcion + ", hecho=" + hecho + "]";

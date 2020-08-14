@@ -1,16 +1,166 @@
-<div th:fragment="team" class="d-flex align-items-center justify-content-center" style="width: 100%">
+<div th:fragment="team"
+	class="d-flex align-items-center justify-content-center " id="team"
+	style="width: 100%">
+	
 
-		<div  class="card  mt-3" style="width: 22rem; border: none">
-			<img class="card-img-top" th:src="@{/img/noTeam4.jpg}"
-				alt="Card image cap">
-			<div class="card-body ">
-				<h3 class="card-text font-weight-bold text-center"> NO
-					TIENES EQUIPO</h3>
+
+	<div th:if="${teamList.isEmpty()}" class="card  mt-3" style="width: 22rem; border: none">
+		<img class="card-img-top" th:src="@{/img/noTeam4.jpg}"
+			alt="Card image cap">
+		<div class="card-body ">
+			<h3 class="card-text font-weight-bold text-center">NO TIENES
+				EQUIPO</h3>
+		</div>
+		<!-- Button trigger modal -->
+		<a href="#" class="btn btn-primary" data-toggle="modal"
+			data-target="#exampleModalCenter">Crear un team</a> <a href="#"
+			class="btn btn-outline-primary mt-3" data-toggle="modal"
+			data-target="#exampleModalCenter1">Entrar a un team</a>
+	</div>
+
+
+
+	<div th:if="${!teamList.isEmpty()}"  th:each="team : ${teamList}" style="width: 100%;">
+	
+		<div style="width: 100%;background-color: #707070;display: flex;flex-direction: column;align-items: center;color:white">	
+			
+		<h2 th:text="${team.nombre_team}"></h2>
+		
+		<h6 style="opacity: 0.5;" th:text="${team.id_team}"></h6>
+		
+		</div>
+		
+		 <!-- <img height="25px"
+						width="25px" style="border-radius: 50%;" alt="no img" th:src="${fotoPerfil}">
+		<h5 th:text="${nombre}"></h5>
+		 -->
+		
+		
+		<div th:replace="fragments/inputNuevaTarea :: inputNuevaTarea('team')"></div>
+			
+			
+			
+		<div th:replace="fragments/tareas :: tarea('team')"></div>
+		
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Modal CREAR UN TEAM -->
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<form   role="form" id="newModalForm">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">CREAR UN
+							TEAM</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+
+					</div>
+					<div class="modal-body">
+
+						<input    type="text"
+							class="form-control input-tarea" id="validationTeamName" placeholder="nombre del team" name="validationTeamName"
+							style="border-top: none; border-left: none; border-right: none;"
+							required>
+						
+
+					</div>
+					<div class="modal-footer">
+
+						<a href="#" role="button" class="" data-toggle="popover"
+							data-placement="top" title=""
+							data-content="crea un team y compartelo con tus amigos."> <svg
+								width="1em" height="1em" viewBox="0 0 16 16"
+								class="bi bi-info-circle" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+  						<path fill-rule="evenodd"
+									d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+  						<path
+									d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+  						<circle cx="8" cy="4.5" r="1" />
+					</svg>
+						</a>
+
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cerrar</button>
+						<button id="boton-crear" type="submit" class="btn btn-primary">Crear</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Modal ENTRAR A UN TEAM -->
+
+	<div class="modal fade" id="exampleModalCenter1" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalCenterTitle1"
+		aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<form   role="form" id="newModalUnir">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle1">ENTRAR A
+						UN TEAM</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+
+				</div>
+				<div class="modal-body">
+
+					<input id="codigo_team" name="codigo_team" type="text" class="form-control input-tarea"
+						placeholder="codigo del team" required
+						style="border-top: none; border-left: none; border-right: none;">
+
+				</div>
+				<div class="modal-footer">
+
+					<a href="#" role="button" class="" data-toggle="popover"
+						data-placement="top" title=""
+						data-content="crea un team y compartelo con tus amigos."> <svg
+							width="1em" height="1em" viewBox="0 0 16 16"
+							class="bi bi-info-circle" fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg">
+  						<path fill-rule="evenodd"
+								d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+  						<path
+								d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z" />
+  						<circle cx="8" cy="4.5" r="1" />
+					</svg>
+					</a>
+
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cerrar</button>
+					<button id="boton-unir" type="submit" class="btn btn-primary">Entrar</button>
+				</div>
+				</form>
 			</div>
 			
-			<a href="#" class="btn btn-primary">Crear un team</a>
-			
-			<a href="#" class="btn btn-outline-primary mt-3">Entrar a un team</a>
 		</div>
-
+	</div>
+	
+	
 </div>
+
+

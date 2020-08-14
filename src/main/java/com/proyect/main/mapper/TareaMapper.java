@@ -18,14 +18,18 @@ public interface TareaMapper {
 	List<Tarea> findAll();
 	
 	
-	@Select("select*from tarea where id_usu=#{id_usu}")
-	List<Tarea> findByIdUser(int id_usu);
+	@Select("select*from tarea where id_usu=#{id_usu} and personal=#{personal}")
+	List<Tarea> findByIdUser(int id_usu,boolean personal);
+	
+	@Select("select*from tarea t join usuario u on t.id_usu=u.id_usu where  personal=#{personal} and u.id_team=#{id_team}")
+	List<Tarea> findByTaskTeam(boolean personal, int id_team);
+	
 	
 	@Delete("delete from tarea where id =#{id} and id_usu=#{id_usu}")
 	int deleteFindById(int id,int id_usu);
 	
 	
-	@Insert("insert into tarea values(null,#{descripcion},false,#{id_usu})")
+	@Insert("insert into tarea values(null,#{descripcion},false,#{personal},#{id_usu})")
 	public int insert(Tarea tarea);
 	
 	

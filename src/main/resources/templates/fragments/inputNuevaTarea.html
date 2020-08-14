@@ -1,0 +1,38 @@
+
+
+<form th:fragment="inputNuevaTarea(variable)" action="#" th:action="@{/save}" class="input-group"
+					th:object="${tarea}" method="post">
+
+
+					<input type="hidden" th:field="*{id}" id="id" name="id">
+					 <input
+						type="hidden" th:value="${id_usu}" id="id_usu" th:name="id_usu">
+						
+						
+						 <input th:if="${variable == 'personal'}" type="hidden" th:value="false" id="personal" th:name="personal">
+						 
+						 <input th:if="${variable == 'team'}" type="hidden" th:value="true" id="personal" th:name="personal">
+						 
+					<input th:field="*{descripcion}" type="text" style="height: 60px;"
+						class="form-control" placeholder="AGREGA UNA NUEVA TAREA"
+						aria-label="AQUI AGREGA UNA NUEVA TAREA"
+						aria-describedby="basic-addon2">
+
+
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit">
+							<svg width="2em" height="2em" viewBox="0 0 16 16"
+								class="bi bi-check2-square" fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+									d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                        <path fill-rule="evenodd"
+									d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+                                      </svg>
+						</button>
+					</div>
+
+
+				</form>
+
+

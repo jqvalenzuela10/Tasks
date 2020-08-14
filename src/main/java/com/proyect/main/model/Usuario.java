@@ -2,7 +2,13 @@ package com.proyect.main.model;
 
 public class Usuario {
 
-	private int id_usu;
+	private int id_usu,id_team;
+	public int getId_team() {
+		return id_team;
+	}
+	public void setId_team(int id_team) {
+		this.id_team = id_team;
+	}
 	private String nombre,email,imagen;
 	public int getId_usu() {
 		return id_usu;
