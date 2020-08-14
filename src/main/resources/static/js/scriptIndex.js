@@ -4,7 +4,7 @@ $(function(){
 	
 	let url_tarea="https://jquilcavaltask.herokuapp.com/rest/tarea";
 	
-	let url_user="https://jquilcavaltask.herokuapp.com/rest/user";
+	let url_user= "https://jquilcavaltask.herokuapp.com/rest/user";
 		
 		
 	$("[data-toggle=popover]").popover();
@@ -46,7 +46,7 @@ $(function(){
 		    },
 		    submitHandler: function(form) {
 		    	let nombre_team=$('#validationTeamName').val();
-				let id_usu=$('#id_usu').val();
+				let id_usu_crear=$('#id_usu').val();
 				
 				let numeroAleatorio= Math.floor(100000 + Math.random()*(999999 + 1 - 100000));
 				
@@ -62,7 +62,7 @@ $(function(){
 		        });
 		    	
 		    	let usuario={
-		    			id_usu:id_usu,
+		    			id_usu:id_usu_crear,
 		    			id_team:numeroAleatorio
 		    	}
 		    	
