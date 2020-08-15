@@ -70,9 +70,11 @@ $(function(){
 		    	
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
-		    	 await axios.put(url_user,usuario );
 		    	 
-		    	  setTimeout(function() { 
+		    	 
+		    	  setTimeout(async function() { 
+		    		  await axios.put(url_user,usuario );
+		    		  
 		    		  location.reload();
 		    	    }, 4000);
 		    	 
