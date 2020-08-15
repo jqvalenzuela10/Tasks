@@ -73,7 +73,7 @@ $(function(){
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 				
-		    	 location.reload();
+		    	 window.location.href = window.location.href;
 		    	 
 	        	}
 		  });
@@ -140,7 +140,7 @@ $(function(){
 		    	
 		    	
 		    	
-		    	location.reload();
+		    	window.location.href = window.location.href;
 		    	
 		    	
 		    	
