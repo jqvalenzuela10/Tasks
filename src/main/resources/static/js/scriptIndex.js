@@ -60,10 +60,10 @@ $(function(){
 		    	}
 		    	
 		    	
-		    	const res=await axios.post(url_team, team);
+		    	await axios.post(url_team, team);
 		    	
 		    	
-		    	const res1=await axios.put(url_user,usuario );
+		    	await axios.put(url_user,usuario );
 		    	
 		    	
 		    	
@@ -108,7 +108,7 @@ $(function(){
 		      },
 		      action: "Please provide some data"
 		    },
-		    submitHandler:async function(form) {
+		    submitHandler:function(form) {
 		    	
 		    	let codigo_team=$('#codigo_team').val();
 				let id_usu_unir=$('#id_usu').val();
@@ -121,7 +121,7 @@ $(function(){
 		    			
 		    	};
 		    
-		    	await axios.put(url_team,unir_team ).then(response => {
+		    	axios.put(url_team,unir_team ).then(response => {
 		    		
 		    		if(response.data==="ok"){
 		    			//exampleModalCenter
