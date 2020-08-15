@@ -71,7 +71,7 @@ $(function(){
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 				
-		    	   location.reload();
+		    	  $("#team").reload("https://jquilcavaltask.herokuapp.com/tareas");
 		    	 
 	        	}
 		 
@@ -138,12 +138,7 @@ $(function(){
 		        });
 		    	
 		    	
-		    	
-		    	
-		    	
-		    	
-		    	
-		    	
+		    	 $("#team").reload("https://jquilcavaltask.herokuapp.com/tareas");
 		    	
 		    }
 		  });
