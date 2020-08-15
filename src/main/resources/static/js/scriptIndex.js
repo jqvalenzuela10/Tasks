@@ -21,8 +21,6 @@ $(function(){
 		
 	    
 	 $('#boton-crear').click(function(e){
-		
- 		
 		 jQuery.validator.addMethod("noSpace", function(value, element) { 
 	         return value == '' || value.trim().length != 0;  
 	       }, "No se permiten espacios en blanco ");
@@ -76,9 +74,10 @@ $(function(){
 		    	 
 		    	 
 	        	}
+		    location.reload();
 		  });
 		 
-		 location.reload();
+		 
 			
 				 
 		})
@@ -149,8 +148,7 @@ $(function(){
 		    }
 		  });
 		 
-		 location.reload();
-			
+		
 				 
 		})
 	   
