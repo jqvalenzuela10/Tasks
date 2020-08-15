@@ -2,7 +2,7 @@ $(function(){
 	
 	let url_team="https://jquilcavaltask.herokuapp.com/rest/team";
 	
-	let url_tarea="https://jquilcavaltask.herokuapp.com/rest/tarea";
+	let url_tarea="https://jquilcavaltask.herokuapp.com/tareas";
 	
 	let url_user= "https://jquilcavaltask.herokuapp.com/rest/user";
 		
@@ -44,7 +44,7 @@ $(function(){
 		      },
 		      action: "Please provide some data"
 		    },
-		    submitHandler: function(form) {
+		    submitHandler:async function(form) {
 		    	let nombre_team=$('#validationTeamName').val();
 				let id_usu_crear=$('#id_usu').val();
 				
@@ -54,30 +54,27 @@ $(function(){
 		    			id_team:numeroAleatorio,
 		    			nombre_team:nombre_team
 		    	}
-		    	console.log(team);
 		    	
-		    	axios.post(url_team, team).then(response => {
-		    		console.log(response)
-		    		
-		        });
 		    	
 		    	let usuario={
 		    			id_usu:id_usu_crear,
 		    			id_team:numeroAleatorio
 		    	}
 		    	
-		    	axios.put(url_user,usuario ).then(response => {
-		    		console.log(response)
-		    		
-		        });
+		    	
+		    	const res=await axios.post(url_team, team);
+		    	
+		    	
+		    	const res1=await axios.put(url_user,usuario );
+		    	
 		    	
 		    	
 		    	
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 				
-		    		
-				$("#team").reload(url_tareas);	
+		    	 location.reload();
+		    	 
 	        	}
 		  });
 		 
@@ -112,7 +109,7 @@ $(function(){
 		      },
 		      action: "Please provide some data"
 		    },
-		    submitHandler: function(form) {
+		    submitHandler:async function(form) {
 		    	
 		    	let codigo_team=$('#codigo_team').val();
 				let id_usu_unir=$('#id_usu').val();
@@ -125,7 +122,7 @@ $(function(){
 		    			
 		    	};
 		    
-		    	axios.put(url_team,unir_team ).then(response => {
+		    	await axios.put(url_team,unir_team ).then(response => {
 		    		
 		    		if(response.data==="ok"){
 		    			//exampleModalCenter
@@ -143,7 +140,7 @@ $(function(){
 		    	
 		    	
 		    	
-		    	 $("#team").reload(url_tareas);	
+		    	location.reload();
 		    	
 		    	
 		    	
