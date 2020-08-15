@@ -63,14 +63,15 @@ $(function(){
 		    	await axios.post(url_team, team);
 		    	
 		    	
-		    	await axios.put(url_user,usuario );
+		    	
 		    	
 		    	
 		    	
 		    	
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
-				
+		    	 await axios.put(url_user,usuario );
+		    	 location.reload();
 		    	  
 		    	 
 	        	}
