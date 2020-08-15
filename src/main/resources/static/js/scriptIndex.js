@@ -73,12 +73,12 @@ $(function(){
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 				
-		    	 document.location.reload(true);
+		    	 
 		    	 
 	        	}
 		  });
 		 
-		 
+		 location.reload();
 			
 				 
 		})
@@ -140,7 +140,7 @@ $(function(){
 		    	
 		    	
 		    	
-		    	document.location.reload(true);
+		    	
 		    	
 		    	
 		    	
@@ -149,7 +149,7 @@ $(function(){
 		    }
 		  });
 		 
-		 
+		 location.reload();
 			
 				 
 		})
