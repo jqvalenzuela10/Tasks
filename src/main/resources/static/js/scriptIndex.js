@@ -71,7 +71,12 @@ $(function(){
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 		    	 await axios.put(url_user,usuario );
-		    	 location.reload();
+		    	 
+		    	  setTimeout(function() { 
+		    		  location.reload();
+		    	    }, 1000);
+		    	 
+		    	
 		    	  
 		    	 
 	        	}
