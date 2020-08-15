@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyect.main.mapper.TeamMapper;
+import com.proyect.main.mapper.UserMapper;
 import com.proyect.main.model.Team;
 import com.proyect.main.model.Usuario;
 
@@ -26,13 +27,17 @@ public class TeamRest {
 	@Autowired
 	private TeamMapper teamMapper;
 	
+	@Autowired
+	private UserMapper usuarioMapper;
 	
 	@PostMapping("/team")
 	public ResponseEntity<Team> registrarTeam(@RequestBody Team team,Model model) {
 		
 		teamMapper.registrarTeam(team);
 		//tareas en team
+		usuarioMapper.actualizar(team);
 		
+		model.addAttribute("teamList",teamMapper.listaTeam(team.getId_usu()));
 		
 		return new ResponseEntity<Team>(HttpStatus.OK);
 	}

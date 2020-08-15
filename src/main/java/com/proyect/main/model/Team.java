@@ -2,9 +2,14 @@ package com.proyect.main.model;
 
 public class Team {
 
-	private int id_team;
+	private int id_team,id_usu;
+	public int getId_usu() {
+		return id_usu;
+	}
+	public void setId_usu(int id_usu) {
+		this.id_usu = id_usu;
+	}
 	private String nombre_team;
-	
 
 	
 	

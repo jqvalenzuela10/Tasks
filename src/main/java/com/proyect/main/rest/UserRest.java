@@ -19,6 +19,8 @@ public class UserRest {
 	
 	@Autowired TeamMapper teamMapper;
 	
+	
+	/*
 	@PutMapping("/user")
 	public String putUser(@RequestBody Usuario usu,Model model) {
 		
@@ -30,4 +32,5 @@ public class UserRest {
 		return "";
 	}
 	
+	*/
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.proyect.main.model.Team;
 import com.proyect.main.model.Usuario;
 
 @Mapper
@@ -27,7 +28,7 @@ public interface UserMapper {
 	
 	
 	@Update("update usuario set id_team=#{id_team} where id_usu=#{id_usu}")
-	int actualizar(Usuario usuario);
+	int actualizar(Team usuario);
 	
 	
 }

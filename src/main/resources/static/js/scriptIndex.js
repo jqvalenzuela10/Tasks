@@ -4,8 +4,7 @@ $(function(){
 	
 	let url_tarea="https://jquilcavaltask.herokuapp.com/tareas";
 	
-	let url_user= "https://jquilcavaltask.herokuapp.com/rest/user";
-		
+	
 		
 	$("[data-toggle=popover]").popover();
 	 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -50,20 +49,13 @@ $(function(){
 				
 		    	let team={
 		    			id_team:numeroAleatorio,
-		    			nombre_team:nombre_team
+		    			nombre_team:nombre_team,
+		    			id_usu:id_usu_crear
 		    	}
 		    	
-		    	
-		    	let usuario={
-		    			id_usu:id_usu_crear,
-		    			id_team:numeroAleatorio
-		    	}
 		    	
 		    	
 		    	await axios.post(url_team, team);
-		    	
-		    	
-		    	
 		    	
 		    	
 		    	
@@ -72,11 +64,7 @@ $(function(){
 		    	 $('#exampleModalCenter').modal('hide');
 		    	 
 		    	 
-		    	  setTimeout(async function() { 
-		    		  await axios.put(url_user,usuario );
-		    		  
-		    		  location.reload();
-		    	    }, 4000);
+		    	 $("#team").reload("https://jquilcavaltask.herokuapp.com/tareas")
 		    	 
 		    	
 		    	  
