@@ -71,10 +71,10 @@ $(function(){
 		    	//exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 				
-		    	 
+		    	   location.reload();
 		    	 
 	        	}
-		    location.reload();
+		 
 		  });
 		 
 		 
