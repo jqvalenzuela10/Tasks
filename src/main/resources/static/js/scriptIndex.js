@@ -2,7 +2,7 @@ $(function(){
 	
 	let url_team="https://jquilcavaltask.herokuapp.com/rest/team";
 	
-	let url_tarea="https://jquilcavaltask.herokuapp.com/tareas";
+	let url_tarea="https://jquilcavaltask.herokuapp.com/rest/tarea";
 	
 	
 		
