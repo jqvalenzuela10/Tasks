@@ -11,36 +11,38 @@
 		<div class="mr-3">
 
 			<div th:if="${variable == 'noingreso'}">
-				<button type="button" class="btn btn-primary">
-					<span class="font-weight-bold text-white">INICIAR SESION</span>
-				</button>
+				<div class="theme-toggle">
+					<h2></h2>
+					<label class="switch "> <input class="button-dark" type="checkbox" checked="checked"> <span class="slider"></span>
+					</label>
+				</div>
 			</div>
 
 			<div th:if="${variable == 'ingreso'}">
 				<div sec:authorize="isAuthenticated()" style="color: white">
-				
+
 					<div class="dropdown">
-						
+
 						<button class="btn btn-primary dropdown-toggle" type="button"
 							id="dropdownMenuButton" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false" th:text="${nombre}"></button>
-							
+
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item btn btn-danger" href="/logout" >Cerrar Sesion</a> <a
-								class="dropdown-item" href="#">Another action</a> <a
+							<a class="dropdown-item btn btn-danger" href="/logout">Cerrar
+								Sesion</a> <a class="dropdown-item" href="#">Another action</a> <a
 								class="dropdown-item" href="#">Something else here</a>
 						</div>
-						 <img height="25px"
-						width="25px" style="border-radius: 50%;" alt="no img" th:src="${fotoPerfil}">
+						<img height="25px" width="25px" style="border-radius: 50%;"
+							alt="no img" th:src="${fotoPerfil}">
 					</div>
 
 
 
 
-					
+
 				</div>
 
-			
+
 			</div>
 
 		</div>

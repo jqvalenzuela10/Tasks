@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" 
-  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" data-dark>
 <head>
 
 <title>Document</title>
@@ -10,14 +10,15 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/estilos/estilos.css}"></div>
+<link rel="stylesheet" th:href="@{/estilos/estilos.css}">
+
 
 
 </head>
-<body>
-	
+<body data-dark>
 
-<div th:replace="fragments/header :: perfil('noingreso')"></div>
+
+	<div th:replace="fragments/header :: perfil('noingreso')"></div>
 
 	<form th:action="@{/login/oauth2/authorization/google}" method="post">
 
@@ -25,24 +26,29 @@
 			class="d-flex align-items-center  justify-content-center  main w-100">
 			<div
 				class="d-flex flex-column   align-items-center justify-content-between container-main">
-				<h4 class="text-black font-weight-bold label-3 text-center">Iniciar
-					sesion para crear tareas</h4>
-				<img width="250px" height="300px" th:src="@{/img/fondo2.jpg}" alt=""
-					srcset="">
-				<div class="w-75">
-					<button type="submit" class="btn btn-danger btn-lg btn-block ">
-						<span class=" font-weight-bold"  style="font-size:0.875rem">CONTINUAR
-							CON GOOGLE</span>
-					</button>
+				
+				<h4 class="text-black font-weight-bold label-3 text-center">INICIAR SESION</h4>
+					
+				<img  width="470px" height="400px" th:src="@{/img/noTeam4.jpg}"alt="" >
+
+				<div data-dark-secondary class="google-btn">
+					<div class="google-icon-wrapper">
+						<img class="google-icon-svg"
+							src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+					</div>
+					<p data-dark-secondary class="btn-text">
+						<b>Sign in with Google</b>
+					</p>
 				</div>
+
 			</div>
 		</main>
 
 	</form>
-	
-	<footer class="footer text-center py-3 " style="background-color: #eaeaea">
-		Licencia 2020 - Creado por: <a
-			href="https://www.linkedin.com/in/jonathan-quilca-valenzuela/">
+
+	<footer data-dark-secondary class="footer text-center py-3 ">
+		2020 - Creado por: 
+		<a href="https://www.linkedin.com/in/jonathan-quilca-valenzuela/">
 			JONATHAN QUILCA VALENZUELA</a>
 	</footer>
 
@@ -55,4 +61,6 @@
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 	integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 	crossorigin="anonymous"></script>
+	
+	<script th:src="@{/js/scriptIndex.js}"></script>
 </html>

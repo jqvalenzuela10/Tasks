@@ -60,7 +60,7 @@ $(function(){
 		    	
 		    	
 		    	
-		    	//exampleModalCenter
+		    	// exampleModalCenter
 		    	 $('#exampleModalCenter').modal('hide');
 		    	 
 		    	 
@@ -120,7 +120,7 @@ $(function(){
 		    	axios.put(url_team,unir_team ).then(response => {
 		    		
 		    		if(response.data==="ok"){
-		    			//exampleModalCenter
+		    			// exampleModalCenter
 				    	 $('#exampleModalCenter1').modal('hide');
 				    	
 				    	 
@@ -151,7 +151,7 @@ $(function(){
 			  let tarea={};
 			  
 			  const $padre=$(e.currentTarget).parent();
-			  //el hijo seria el checkbox
+			  // el hijo seria el checkbox
 			  const $hijo=$padre.children()[0];
 			  
 			  console.log($padre);
@@ -182,7 +182,7 @@ $(function(){
 			  const $padre=$(e.currentTarget).parent();
 
 			  const $padreSuperio=$($padre).parent();
-			  //el hijo seria la descripcion
+			  // el hijo seria la descripcion
 			  const $hijo=$padreSuperio.children()[1];
 			  
 			  console.log(e.target.id+' '+$($hijo).children().val()+'  '+$(e.target).is(":checked"));
@@ -205,8 +205,67 @@ $(function(){
    
  
    
+   	// dark-mode
+   if(localStorage.getItem('isActiveDarkMode') != null){
+	   let valor=localStorage.getItem('isActiveDarkMode');
+	   console.log(valor)
+	   if(valor == 'true'){
+		   console.log('entro aqui')
+		   $("[data-dark]").each(function() {
+	   			  $( this ).addClass("dark-mode");
+	   			});
+	   			
+	   			
+	   			$("[data-dark-secondary]").each(function() {
+	     			  $(this).addClass("dark-mode-secundario");
+	     			});
+	   			
+	   			$(".button-dark").attr("checked","checked");
+	   }
+	   else{
+		   $("[data-dark]").each(function() {
+  			  $( this ).removeClass("dark-mode");
+  			});
+			
+			$("[data-dark-secondary]").each(function() {
+			  $(this).removeClass("dark-mode-secundario");
+			});
+			$(".button-dark").removeAttr("checked","checked");
+	   }
+   }
    
-
+   
+   	$(".button-dark").click(function(){
+   		let isActive;
+   		const $selectors=$();
+   		
+   		console.log($selectors);
+   		
+   		if($('.button-dark').prop('checked')){
+   			$("[data-dark]").each(function() {
+   			  $( this ).addClass("dark-mode");
+   			});
+   			
+   			
+   			$("[data-dark-secondary]").each(function() {
+     			  $(this).addClass("dark-mode-secundario");
+     			});
+   			isActive=true;
+   			
+   		}else{
+   			$("[data-dark]").each(function() {
+     			  $( this ).removeClass("dark-mode");
+     			});
+   			
+   			$("[data-dark-secondary]").each(function() {
+   			  $(this).removeClass("dark-mode-secundario");
+   			});
+   			isActive=false;
+   		}
+   		
+   		localStorage.setItem('isActiveDarkMode', isActive);
+   	})
+   
 
    
 	  
