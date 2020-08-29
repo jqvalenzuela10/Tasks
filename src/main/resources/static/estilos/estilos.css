@@ -251,6 +251,8 @@ body{
 	display: flex;
 	justify-content: center;
 	position: relative;
+	outline: none;
+	border:none;
 }
 
 .google-btn .google-icon-wrapper {
@@ -261,7 +263,7 @@ body{
 	height: 40px;
 	border-radius: 2px;
 	user-select: none;
-	left: 114px;
+	left: 96px;
 }
 
 .google-btn .google-icon-svg {
